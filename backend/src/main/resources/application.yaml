@@ -1,13 +1,23 @@
 server:
   port: 8081
 spring:
-    datasource:
-        url: jdbc:mysql://localhost:3306/university_management_system?useSSL=false
-        username: root
-        password: root
-    jpa:
-        hibernate.ddl-auto: update
-        show-SQL: true
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/university_management_system?useSSL=false}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+app:
+  jwt:
+    # Replace this fallback with a long random Base64 secret in production.
+    secret: ${JWT_SECRET:VGVzdC1vbmx5LXNlY3JldC1rZXktdGhhdC1tdXN0LWJlLWF0LWxlYXN0LTMyLWJ5dGVzLWxvbmc=}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  auth:
+    google:
+      enabled: false
+      success-redirect-uri: ${GOOGLE_OAUTH_SUCCESS_REDIRECT_URI:http://localhost:5173/}
 #JPA setting
 # we can use create or update
 

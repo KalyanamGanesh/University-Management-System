@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/studentdetails")
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173"})
 public class ControllerStudentApi {
     // after controlling it goes service layer so we are writing
     StudentDetailsService studentDetailsService;
